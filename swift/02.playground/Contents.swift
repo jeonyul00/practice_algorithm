@@ -22,7 +22,7 @@ func solution(_ durability: [Int], _ dogs: [Dog]) -> [String] {
         var location = 0
         var fail = false
         if let jump = Int(dog.jump), let weight = Int(dog.weight) {
-            while location < mutableDurability.count - 1 {
+            while location < mutableDurability.count {
                 location += jump
                 if location - 1 < mutableDurability.count {
                     mutableDurability[location - 1] -= weight
@@ -43,3 +43,4 @@ func solution(_ durability: [Int], _ dogs: [Dog]) -> [String] {
 }
 
 print(solution(durability, dogs))
+

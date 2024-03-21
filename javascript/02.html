@@ -40,7 +40,7 @@
         for (let dog of dogs) {
           let location = 0;
           let fail = false;
-          while (location < durability.length - 1) {
+          while (location < durability.length) {
             location += parseInt(dog.jump, 10);
             durability[location - 1] -= parseInt(dog.weight, 10);
             if (durability[location - 1] < 0) {
@@ -54,7 +54,6 @@
         }
         return answer;
       }
-
       console.log(solution(durability, dogs));
     </script>
   </body>
