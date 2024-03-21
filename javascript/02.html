@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let durability = [1, 2, 1, 4];
+      let dogs = [
+        {
+          name: "루비독",
+          age: "95년생",
+          jump: "3",
+          weight: "4",
+        },
+        {
+          name: "피치독",
+          age: "95년생",
+          jump: "3",
+          weight: "3",
+        },
+        {
+          name: "씨-독",
+          age: "72년생",
+          jump: "2",
+          weight: "1",
+        },
+        {
+          name: "코볼독",
+          age: "59년생",
+          jump: "1",
+          weight: "1",
+        },
+      ];
+
+      function solution(durability, dogs) {
+        let answer = [];
+        for (let dog of dogs) {
+          let location = 0;
+          let fail = false;
+          while (location < durability.length - 1) {
+            location += parseInt(dog.jump, 10);
+            durability[location - 1] -= parseInt(dog.weight, 10);
+            if (durability[location - 1] < 0) {
+              fail = true;
+              break;
+            }
+          }
+          if (!fail) {
+            answer.push(dog.name);
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution(durability, dogs));
+    </script>
+  </body>
+</html>
