@@ -2,7 +2,6 @@ import UIKit
 
 
 // 페이지 교체 알고리즘: LRU
-
 let type = [
     "척추동물",
     "어류",

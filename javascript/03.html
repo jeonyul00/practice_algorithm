@@ -7,10 +7,36 @@
   </head>
   <body>
     <script>
-      function solution() {
-        return answer;
+      function solution(waitingPeople) {
+        const dailyCapacity = 1380;
+        const hourlyCapacity = 115;
+        const months = [1024, 512, 256, 128, 64, 32, 16, 8, 4, 2];
+        let daysNeeded = Math.floor(waitingPeople / dailyCapacity);
+        const remainingPeople = waitingPeople % dailyCapacity;
+        let hour = 9 + Math.floor(remainingPeople / hourlyCapacity);
+        let minutes = Math.floor((remainingPeople % hourlyCapacity) / 15) * 10;
+
+        let year = 2020;
+        let month = 1;
+        let day = 1;
+
+        for (let daysInMonth of months) {
+          if (daysNeeded < daysInMonth) {
+            day += daysNeeded;
+            break;
+          }
+          daysNeeded -= daysInMonth;
+          month += 1;
+          if (month > 10) {
+            year += 1;
+            month = 1;
+          }
+        }
+
+        return `${year}년 ${month}월 ${day}일 ${hour}시 ${delayedMinutes}분 출발`;
       }
-      console.log(solution());
+
+      console.log(solution(14000605));
     </script>
   </body>
 </html>
