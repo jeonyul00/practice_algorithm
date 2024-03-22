@@ -22,13 +22,21 @@
 
       // 3. 재귀함수
       // 100 + (99 + (98 + (... + (2 + 1)...)))
-      function solution(maxNumber) {
+      function solution1(maxNumber) {
         if (maxNumber <= 1) {
           return 1;
         }
-        return maxNumber + solution(maxNumber - 1);
+        return maxNumber + solution1(maxNumber - 1);
       }
-      console.log(solution(maxNumber)); // 5050
+      console.log(solution1(maxNumber)); // 5050
+
+      // 2진수 변환 재귀 함수
+      function solution2(num) {
+        if (num === 1 || num === 0) {
+          return String(num);
+        }
+        return solution2(Math.floor(num / 2)) + String(num % 2);
+      }
     </script>
   </body>
 </html>
