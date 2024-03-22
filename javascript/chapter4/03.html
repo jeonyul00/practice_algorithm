@@ -1,0 +1,41 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer;
+        let count = arr.length;
+        let studentCount = arr[0].length;
+
+        for (let i = 1; i < studentCount; i++) {
+          for (let j = 1; j < studentCount; j++) {
+            let cnt = 0;
+            for (let k = 0; k < count; k++) {
+              let pi = 0;
+              let pj = 0;
+              for (let s = 0; s < studentCount; s++) {
+                if (arr[k][s] === i) {
+                  pi = s;
+                }
+                if (arr[k][s] === j) {
+                  pj = s;
+                }
+                if (pi < pj) cnt++;
+              }
+              if (cnt === count) answer++;
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution([[3412], [4321], [3142]]));
+    </script>
+  </body>
+</html> -->
