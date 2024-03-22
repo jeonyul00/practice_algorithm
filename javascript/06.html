@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const firstMatrix = [
+        [1, 0, 0, 0, 0],
+        [0, 0, 1, 0, 1],
+        [0, 0, 1, 0, 1],
+        [0, 0, 1, 0, 1],
+        [0, 0, 1, 0, 1],
+      ];
+
+      const secondMatrix = [
+        [0, 0, 0, 0, 1],
+        [0, 0, 0, 0, 3],
+        [0, 0, 0, 0, 4],
+        [0, 2, 0, 0, 2],
+        [4, 5, 0, 2, 0],
+      ];
+
+      function solution(firstMatrix, secondMatrix) {
+        let answer = "";
+        const arr = [];
+
+        for (let i = 0; i < firstMatrix.length; i++) {
+          arr[i] = new Array(firstMatrix[i].length);
+        }
+
+        for (let i = 0; i < secondMatrix.length; i++) {
+          for (let j = 0; j < secondMatrix.length; j++) {
+            arr[i][j] = secondMatrix[j][secondMatrix[0].length - 1 - i];
+            arr[i][j] += firstMatrix[i][j];
+          }
+        }
+        for (let i of arr) {
+          answer += String.fromCharCode(parseInt(i.join(""), 8));
+        }
+
+        return answer;
+      }
+
+      console.log(solution(firstMatrix, secondMatrix));
+    </script>
+  </body>
+</html>
