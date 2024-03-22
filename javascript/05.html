@@ -6,11 +6,59 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- 2진 트리 DFS -->
+    <!-- 검색 알고리즘 -->
+    <!-- DFS : 깊이 우선 탐색 -->
+    <!-- BFS : 너비 우선 탐색 -->
     <script>
-      function solution() {
-        let answer;
+      const graph = {
+        100: new Set([67, 66]),
+        67: new Set([100, 82, 63]),
+        66: new Set([100, 73, 69]),
+        82: new Set([67, 61, 79]),
+        63: new Set([67]),
+        73: new Set([66]),
+        69: new Set([66, 65, 81]),
+        61: new Set([82]),
+        79: new Set([82, 87, 77]),
+        65: new Set([69, 84, 99]),
+        81: new Set([69]),
+        87: new Set([79, 31, 78]),
+        77: new Set([79]),
+        84: new Set([65]),
+        99: new Set([65]),
+        31: new Set([87]),
+        78: new Set([87]),
+      };
+
+      // 최대값
+      function solution(graph, start) {
+        const answer = [];
+        const stack = [start];
+        
+        let result = ""
+        while (stack) {
+          let nextNode = 0;
+          nextNode = stack.pop(); // 100
+          if (!answer.includes(nextNode)) {            
+            answer.push(nextNode);
+            let differenceData = new Set([...graph[nextNode]].filter((elements) => !new Set(answer).has(elements)));            
+            if([...differenceData].length === 0){
+              break
+            }            
+            stack.push(Math.max(...differenceData))            
+          }
+          if (stack.length === 0 ){
+              break
+            }
+        }
+        
+        for(var num of answer){
+          result += String.fromCharCode(num)
+        }
+        return result
       }
+
+      console.log(solution(graph, 100));
     </script>
   </body>
 </html>
