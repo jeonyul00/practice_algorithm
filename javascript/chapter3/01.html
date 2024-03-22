@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = true;
+        str = str.toLowerCase().replace(/[^a-z]/g, "");
+        if (str.split("").reverse().join("") !== str) {
+          return false;
+        }
+        return answer;
+      }
+
+      console.log(solution("found7, time: study; Yduts; emit, 7Dnuof"));
+    </script>
+  </body>
+</html>
