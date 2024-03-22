@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(userA, userB) {
+        let answer = "";
+        for (let i = 0; i < userA.length; i++) {
+          if (userA[i] === userB[i]) {
+            answer += "D";
+          } else if (userA[i] === 1 && userB[i] === 3) {
+            answer += "A";
+          } else if (userA[i] === 2 && userB[i] === 1) {
+            answer += "A";
+          } else if (userA[i] === 3 && userB[i] === 2) {
+            answer += "A";
+          } else {
+            answer += "B";
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution([2, 3, 3, 1, 3], [1, 1, 2, 2, 3]));
+    </script>
+  </body>
+</html>
