@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        let answer = "";
+        for (let i of str) {
+          if (i === "A") {
+            answer += "#";
+          } else {
+            answer += i;
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution("BANANA"));
+    </script>
+  </body>
+</html>

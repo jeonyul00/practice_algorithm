@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer;
+        let min = Number.MAX_SAFE_INTEGER;
+
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] < min) {
+            min = arr[i];
+          }
+        }
+        answer = min;
+        return answer;
+      }
+
+      console.log(
+        solution([1, 2, 4, 5, 5, 31, 421, 4, 1, 43, 53, 25, 3, 2, 2])
+      );
+    </script>
+  </body>
+</html>

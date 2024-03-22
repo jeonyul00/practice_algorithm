@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = arr;
+        let sum = arr.reduce((acc, current) => acc + current, 0);
+        let flag = 0;
+
+        for (let i = 0; i < answer.length - 1; i++) {
+          for (let j = i + 1; j < answer.length; j++) {
+            if (sum - (answer[i] + answer[j]) === 100) {
+              answer.splice(i, 1);
+              answer.splice(j, 1);
+              flag = 1;
+              break;
+            }
+          }
+          if (flag === 1) {
+            break;
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution([22, 7, 21, 19, 10, 15, 25, 8, 13]));
+    </script>
+  </body>
+</html>
