@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = [10, 11, 9, 3, 2, 6, 5, 4, 12, 11];
+
+      function customOrderBy(answer, value) {
+        for (elements of answer) {
+          if (elements < answer[elements]) {
+            return elements;
+          }
+        }
+        return answer.length;
+      }
+
+      function solution(arr) {
+        const answer = [];
+        let length = arr.length;
+        let value = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+          value = arr.shift();
+          index = customOrderBy(answer, value);
+          answer.splice(index, 0, value);
+        }
+        return answer;
+      }
+
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

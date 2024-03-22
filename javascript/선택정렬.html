@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = [10, 11, 9, 3, 2, 6, 5, 4, 12, 11];
+      function solution(arr) {
+        const answer = [];
+        while (arr) {
+          answer.push(Math.min.apply(null, arr));
+          answer.splice(arr.indexOf(Math.min.apply(null, arr)), 1);
+        }
+        return answer;
+      }
+
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
