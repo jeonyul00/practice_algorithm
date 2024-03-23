@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(userCount, outNumber) {
+        let answer;
+        const queue = Array.from(
+          { length: userCount },
+          (_, index) => index + 1
+        );
+
+        while (queue.length) {
+          for (let i = 1; i < outNumber; i++) {
+            queue.push(queue.shift());
+          }
+          queue.shift();
+          if (queue.length === 1) {
+            answer = queue[0];
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>
