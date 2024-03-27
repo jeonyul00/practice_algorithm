@@ -8,7 +8,6 @@ func solution(_ mapCount:Int, _ map:[[Int]]) -> Int {
             let currentValue = map[i][j]
             var isPeak = true
             let directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-            
             for dir in directions {
                 let ni = i + dir.0
                 let nj = j + dir.1
@@ -24,9 +23,7 @@ func solution(_ mapCount:Int, _ map:[[Int]]) -> Int {
             }
         }
     }
-    
     return count
-    
 }
 
 print(solution(5, [
