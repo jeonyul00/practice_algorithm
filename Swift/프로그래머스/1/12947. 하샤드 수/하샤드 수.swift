@@ -1,0 +1,1 @@
+func solution(_ x:Int) -> Bool { let str:String = String(x);var total:Int = 0;for i in str { total += Int(String(i))! }; return x % total == 0; }
