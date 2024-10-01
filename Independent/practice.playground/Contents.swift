@@ -120,7 +120,133 @@ anotherInt
 //allCases
 //rawValue
 
-/*
-정리
- */
+// ---
 
+// 데이터 구조 만들어보자
+public struct Stack<T>: Sequence {
+    private var elements = [T]()
+    
+    public init() {}
+    
+    public mutating func pop() -> T? {
+        return self.elements.popLast()
+    }
+    
+    public mutating func push(_ element: T) {
+        self.elements.append(element)
+    }
+    
+    public func peek() -> T? {
+        return self.elements.last
+    }
+    
+    public func isEmpty() -> Bool {
+        return self.elements.isEmpty
+    }
+    
+    public var count: Int {
+        return self.elements.count
+    }
+    
+    // Sequence를 구현하기 위한 makeIterator() 메서드
+    public func makeIterator() -> StackIterator<T> {
+        return StackIterator(self)
+    }
+}
+
+// IteratorProtocol을 준수하는 이터레이터 구현
+public struct StackIterator<T>: IteratorProtocol {
+    private var stack: Stack<T>
+    
+    init(_ stack: Stack<T>) {
+        self.stack = stack
+    }
+    
+    public mutating func next() -> T? {
+        return stack.pop()
+    }
+}
+
+public struct Queue<T>: Sequence {
+    private var data = [T]()
+    
+    public init() {}
+    
+    public mutating func dequeue() -> T? {
+        guard !data.isEmpty else { return nil }
+        return self.data.removeFirst()
+    }
+    
+    public func peek() -> T? {
+        return self.data.first
+    }
+    
+    public mutating func enqueue(_ element: T) {
+        self.data.append(element)
+    }
+    
+    public func makeIterator() -> QueueIterator<T> {
+        return QueueIterator(self)
+    }
+}
+
+public struct QueueIterator<T>: IteratorProtocol {
+    private var queue: Queue<T>
+    
+    init(_ queue: Queue<T>) {
+        self.queue = queue
+    }
+    
+    public mutating func next() -> T? {
+        return queue.dequeue()
+    }
+}
+
+public struct CircularBuffer<T> {
+    private var buffer: [T?]
+    private var head: Int = 0
+    private var tail: Int = 0
+    private var isFull: Bool = false
+    private var capacity: Int
+    
+    public var isFutllBuffer: Bool {
+        return isFull
+    }
+    public var isEmpty: Bool {
+        return head == tail && !isFull
+    }
+    
+    init(size:Int) {
+        self.capacity = size
+        self.buffer = Array(repeating: nil, count: size)
+    }
+    
+    public mutating func enqueue(_ element: T) {
+        buffer[head] = element
+        tail = (tail + 1) % capacity
+        
+        if isFull {
+            head = (head + 1) % capacity // 가득 차 있으면 head 이동
+        }
+        isFull = (tail == head)
+        
+    }
+    
+    public mutating func dequeue() -> T? {
+        guard !isEmpty else { return nil }
+        
+        let element = buffer[head]
+        buffer[head] = nil
+        head = (head + 1) % capacity
+        isFull = false
+        
+        return element
+    }
+    
+    // 버퍼에서 가장 오래된 요소를 확인
+    public func peek() -> T? {
+        return buffer[head]
+    }
+
+    
+}
