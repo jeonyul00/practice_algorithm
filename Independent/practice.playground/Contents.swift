@@ -247,6 +247,106 @@ public struct CircularBuffer<T> {
     public func peek() -> T? {
         return buffer[head]
     }
-
     
+    
+}
+
+
+// 이진트리
+class BinaryTreeNode<T: Comparable> {
+    var value:T
+    var left: BinaryTreeNode?
+    var right: BinaryTreeNode?
+    var parent: BinaryTreeNode?
+    
+    init(value: T, left: BinaryTreeNode? = nil, right: BinaryTreeNode? = nil, parent: BinaryTreeNode? = nil) {
+        self.value = value
+        self.left = left
+        self.right = right
+        self.parent = parent
+    }
+    
+    // 삽입
+    public func insertNodeFromNode(_ value: T) {
+        if let _ = self.parent { return }
+        self.addNode(value)
+    }
+    
+    private func addNode(_ value:T) {
+        // 나보다 작은 경우: 왼쪽
+        if value < self.value {
+            // 좌측 노드가 있는 경우 || 없는 경우
+            if let leftNode = self.left {
+                leftNode.addNode(value)
+            } else {
+                let newNode = BinaryTreeNode(value: value)
+                newNode.parent = self
+                self.left = newNode
+            }
+        } else {
+            // 나보다 큰 경우: 오른쪽
+            if let rightNode = self.right {
+                rightNode.addNode(value)
+            } else {
+                let newNode = BinaryTreeNode(value: value)
+                newNode.parent = self
+                self.right = newNode
+            }
+        }
+    }
+    
+    // 중위 순회: 왼 -> 나 -> 오
+    public func inOrder() {
+        self.left?.preOrder()
+        print(self.value)
+        self.right?.preOrder()
+    }
+    
+    // 전위 순회: 나 -> 왼 -> 오
+    public func preOrder() {
+        print(self.value)
+        self.left?.preOrder()
+        self.right?.preOrder()
+    }
+    
+    // 후위 순회: 왼 -> 오 -> 나
+    public func postOrder() {
+        self.left?.preOrder()
+        self.right?.preOrder()
+        print(self.value)
+    }
+    
+    // 검색
+    public func search(value:T) -> BinaryTreeNode? {
+        // 키 값을 찾은 경우
+        if value == self.value {
+            return self
+        }
+        
+        // 해당 키값이 나보다 작은 경우: 왼쪽 서브트리로 이동
+        if value < self.value {
+            guard let left = self.left else { return nil }
+            return left.search(value: value)
+        } else {
+            // 해당 키값이 나보다 큰 경우: 오른쪽 서브트리로 이동
+            guard let right = self.right else { return nil }
+            return right.search(value: value)
+        }
+    }
+}
+
+
+let root = BinaryTreeNode(value: 10)
+root.insertNodeFromNode(5)
+root.insertNodeFromNode(15)
+root.insertNodeFromNode(3)
+root.insertNodeFromNode(7)
+root.insertNodeFromNode(12)
+root.insertNodeFromNode(18)
+
+// 검색 호출
+if let foundNode = root.search(value: 7) {
+    print("검색된 값: \(foundNode.value)")
+} else {
+    print("값을 찾을 수 없습니다.")
 }
