@@ -1,14 +1,10 @@
-func solution(_ a:Int, _ b:Int) -> String {
-    let lastDays:[Int] = [31,29,31,30,31,30,31,31,30,31,30,31]
-    let days: [String] = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
-    
-    var total = b - 1
-    
-    for i in 0..<a - 1 {
-        total += lastDays[i]
-    }
-    
-    let dayIndex = (total + 5) % 7
+import Foundation 
 
-    return days[dayIndex]
+func solution(_ a:Int, _ b:Int) -> String {
+    let dateFormatterGet = DateFormatter()
+    dateFormatterGet.dateFormat = "yyyy-MM-dd"
+    let date = dateFormatterGet.date(from:"2016-\(a)-\(b)")
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat  = "EE"
+    return dateFormatter.string(from:date!).uppercased()
 }
