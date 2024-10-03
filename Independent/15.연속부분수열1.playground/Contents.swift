@@ -24,4 +24,4 @@ func solution(_ num: Int, _ arr: [Int]) -> Int {
     return answer
 }
 
-print(solution(6, [1, 2, 1, 3, 1, 1, 1, 2]))  // 출력: 3
+print(solution(6, [1, 2, 1, 3, 1, 1, 1, 2]))
