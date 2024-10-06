@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 let minValue = Int.min
 let maxValue:Int = .max
@@ -15,27 +16,27 @@ let binaryInteger = 0b10001      // 2진수 (0b로 시작)
 let octalInteger = 0o21          // 8진수 (0o로 시작)
 let hexadecimalInteger = 0x11    // 16진수 (0x로 시작)
 
-print(decimalInteger)          // 17 (10진수)
-print(binaryInteger)           // 17 (2진수 -> 10진수로 출력)
-print(octalInteger)            // 17 (8진수 -> 10진수로 출력)
-print(hexadecimalInteger)      // 17 (16진수 -> 10진수로 출력)
+// print(decimalInteger)          // 17 (10진수)
+// print(binaryInteger)           // 17 (2진수 -> 10진수로 출력)
+// print(octalInteger)            // 17 (8진수 -> 10진수로 출력)
+// print(hexadecimalInteger)      // 17 (16진수 -> 10진수로 출력)
 
 let number = 0b00010001010101010
 
 // 2진수 변환
 let binaryString = String(number, radix: 2)
-print("Binary: \(binaryString)")
+// print("Binary: \(binaryString)")
 
 // 8진수 변환
 let octalString = String(number, radix: 8)
-print("Octal: \(octalString)")  // Octal: 21
+// print("Octal: \(octalString)")  // Octal: 21
 
 // 16진수 변환
 let hexadecimalString = String(number, radix: 16)
-print("Hexadecimal: \(hexadecimalString)")  // Hexadecimal: 11
+// print("Hexadecimal: \(hexadecimalString)")  // Hexadecimal: 11
 
 let value = 18
-print(String(value, radix: 16))
+// print(String(value, radix: 16))
 
 /*
  튜플은 비구조화 할당이 됨
@@ -56,10 +57,10 @@ let (x, y) = (1, 2)
  */
 
 let aAsciiValue = UInt8(Character("a").asciiValue!)
-print(aAsciiValue)
+// print(aAsciiValue)
 
 let character = Character(UnicodeScalar(aAsciiValue))
-print(character)
+// print(character)
 
 /*
  String.Index 타입을 Int로 변환
@@ -69,7 +70,7 @@ print(character)
 let str = "Hello, World!"
 if let index = str.firstIndex(of: "W") {
     let intIndex = str.distance(from: str.startIndex, to: index)
-    print(intIndex)  // 출력: 7
+    // print(intIndex)  // 출력: 7
 }
 
 let repeatingArr = Array(repeating:0, count:10)
@@ -91,10 +92,10 @@ favoriteGenres.contains("Rock")
 var namesOfIntegers = [Int: String]()
 namesOfIntegers[16] = "sixteen"
 // namesOfIntegers now contains 1 key-value pair
-print(namesOfIntegers)
+// print(namesOfIntegers)
 namesOfIntegers = [:]
 // namesOfIntegers is once again an empty dictionary of type [Int: String]
-print(namesOfIntegers)
+// print(namesOfIntegers)
 
 
 /*
@@ -298,13 +299,13 @@ class BinaryTreeNode<T: Comparable> {
     // 중위 순회: 왼 -> 나 -> 오
     public func inOrder() {
         self.left?.preOrder()
-        print(self.value)
+        // print(self.value)
         self.right?.preOrder()
     }
     
     // 전위 순회: 나 -> 왼 -> 오
     public func preOrder() {
-        print(self.value)
+        // print(self.value)
         self.left?.preOrder()
         self.right?.preOrder()
     }
@@ -313,7 +314,7 @@ class BinaryTreeNode<T: Comparable> {
     public func postOrder() {
         self.left?.preOrder()
         self.right?.preOrder()
-        print(self.value)
+        // print(self.value)
     }
     
     // 검색
@@ -346,7 +347,126 @@ root.insertNodeFromNode(18)
 
 // 검색 호출
 if let foundNode = root.search(value: 7) {
-    print("검색된 값: \(foundNode.value)")
+    // print("검색된 값: \(foundNode.value)")
 } else {
-    print("값을 찾을 수 없습니다.")
+    // print("값을 찾을 수 없습니다.")
 }
+
+// ---
+func solution(_ letters: String) -> Int {
+    var smallSet: Set<Character> = []
+    var upperSet: Set<Character> = []
+    var answer: Int = 0
+    
+    for i in letters {
+        if i.isLowercase {
+            smallSet.insert(i)
+        } else if i.isUppercase && !upperSet.contains(Character(i.uppercased())) {
+            if smallSet.contains(Character(i.lowercased())) {
+                answer += 1
+                smallSet.remove(Character(i.lowercased()))
+            }
+            upperSet.insert(Character(i.uppercased()))
+        }
+    }
+    return answer
+}
+
+
+print(solution("aaAbcCABBC"))
+print(solution("xyzXYZabcABC"))
+print(solution("ABCabcAefG"))
+
+// --
+func solution2(_ A: [Int]) -> Int {
+    var withFirst = 0
+    var withoutFirst = 1
+    var firstRightValue = A[1]
+    
+    if A.count > 1 {
+        for i in stride(from: 2, to: A.count, by: 2) {
+            if i + 1 < A.count {
+                let currentLeft = A[i]
+                let currentRight = A[i+1]
+                
+                if firstRightValue != currentLeft {
+                    withFirst += 1
+                }
+                firstRightValue = currentRight
+            }
+        }
+    }
+    
+    if A.count > 3 {
+        firstRightValue = A[3]
+        for i in stride(from: 4, to: A.count, by: 2) {
+            if i + 1 < A.count {
+                let currentLeft = A[i]
+                let currentRight = A[i+1]
+                
+                if firstRightValue != currentLeft {
+                    withoutFirst += 1
+                }
+                firstRightValue = currentRight
+            }
+        }
+    }
+    
+    print(withFirst, withoutFirst)
+    return min(withFirst, withoutFirst)
+}
+
+solution2([2,4,1,3,4,6,2,4,1,6]) // 3
+solution2([1,5,3,3,1,3])
+solution2([3,4]) // 0
+
+// --
+
+let directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  // 상하좌우 탐색 방향
+
+func isValid(_ x: Int, _ y: Int, _ R: Int, _ C: Int, _ plan: [[Character]], _ visited: inout [[Bool]]) -> Bool {
+    return x >= 0 && x < R && y >= 0 && y < C && plan[x][y] == "*" && !visited[x][y]
+}
+
+func bfs(_ startX: Int, _ startY: Int, _ R: Int, _ C: Int, _ plan: [[Character]], _ visited: inout [[Bool]]) {
+    var queue: [(Int, Int)] = [(startX, startY)]
+    visited[startX][startY] = true
+    
+    while !queue.isEmpty {
+        let (x, y) = queue.removeFirst()
+        for dir in directions {
+            let newX = x + dir.0
+            let newY = y + dir.1
+            if isValid(newX, newY, R, C, plan, &visited) {
+                visited[newX][newY] = true
+                queue.append((newX, newY))
+            }
+        }
+    }
+}
+
+func solution3(_ plan: [String]) -> Int {
+    let R = plan.count
+    let C = plan[0].count
+    var grid = plan.map { Array($0) }
+    var visited = Array(repeating: Array(repeating: false, count: C), count: R)
+    var cleanCount = 0
+    
+    for i in 0..<R {
+        for j in 0..<C {
+            if grid[i][j] == "*" && !visited[i][j] {
+                // 새로운 청소되지 않은 구역을 찾으면 BFS 시작
+                bfs(i, j, R, C, grid, &visited)
+                cleanCount += 1  // 로봇 운용 횟수 증가
+            }
+        }
+    }
+    
+    return cleanCount
+}
+
+let plan1 = [".*#..*", ".*#*.#", "######", ".*..#.", "...###"]
+let plan2 = ["*#..", "#..#", ".##.", "...*"]
+
+print(solution3(plan1))  // 출력: 3
+print(solution3(plan2))  // 출력: 2
