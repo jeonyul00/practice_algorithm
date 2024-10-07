@@ -22,9 +22,12 @@ func solution(_ num: Int) {
 // --
 func recursion(_ num: Int) -> String {
     
-    guard num > 0 else { return "이진수는 -----> " }        
-    return recursion(num / 2) + String(num % 2)
-    
+    guard num > 0 else { return "" }
+    print(num)
+    print("recursion(num / 2)  ::: ",recursion(num / 2) )
+    print("String(num % 2) ::: ",String(num % 2))
+    let answer = recursion(num / 2) + String(num % 2)
+    return answer
 }
 
 // 재귀 이진수 출력
