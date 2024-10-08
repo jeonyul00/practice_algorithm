@@ -31,3 +31,39 @@ let result = solution1(1)
 print("전위 순회:", result.0)
 print("중위 순회:", result.1)
 print("후위 순회:", result.2)
+
+// --- 부분집합 구하기
+
+print("--------------------")
+
+func DFS2(_ n: Int, _ num: Int, _ checkArr: inout [Int], _ answer: inout [String]) {
+    var temp: String = ""
+    
+    if n == num + 1 {
+        for i in 1...num {
+            if checkArr[i] == 1 {
+                temp += String(i)
+            }
+        }
+        if !temp.isEmpty {
+            answer.append(temp)
+        }
+        return
+    }
+    
+    checkArr[n] = 1
+    DFS2(n + 1, num, &checkArr, &answer)
+    checkArr[n] = 0
+    DFS2(n + 1, num, &checkArr, &answer)
+}
+
+func solution2(_ num: Int) -> [String] {
+    var answer: [String] = []
+    var checkArr = Array(repeating: 0, count: num + 1)
+    
+    DFS2(1, num, &checkArr, &answer)
+    
+    return answer
+}
+
+print(solution2(3))
