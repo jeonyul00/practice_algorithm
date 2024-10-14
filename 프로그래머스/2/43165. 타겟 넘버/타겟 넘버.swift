@@ -4,8 +4,8 @@ func dfs(_ numbers: [Int], _ target: Int, _ index: Int, _ currentSum: Int) -> In
     if index == numbers.count {
         return currentSum == target ? 1 : 0
     }    
-    var add = dfs(numbers, target, index + 1, currentSum + numbers[index])
-    var sub = dfs (numbers, target, index + 1, currentSum - numbers[index])    
+    let add = dfs(numbers, target, index + 1, currentSum + numbers[index])    
+    let sub = dfs (numbers, target, index + 1, currentSum - numbers[index])    
     return add + sub
     
 }
