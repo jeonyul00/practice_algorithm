@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(n) {
+      let answer = Number.MAX_SAFE_INTEGER;
+
+      n.forEach((value) => {
+        if (value < answer) {
+          answer = value;
+        }
+      });
+      return answer;
+    }
+    console.log(solution([15, 3, 7, 11, 2, 15, 17]));
+  </script>
+
+  <body></body>
+</html>
