@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(a, b, c) {
+      let answer = "yes";
+      let sum = a + b + c;
+      let longest = Math.max(a, b, c);
+
+      if (sum - longest <= longest) {
+        answer = "no";
+      }
+      return answer;
+    }
+  </script>
+  <body></body>
+</html>
