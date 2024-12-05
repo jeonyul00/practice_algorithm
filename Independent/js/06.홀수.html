@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(arr) {
+      const answer = arr.filter((v) => v % 2 != 0).sort((a, b) => a - b);
+      return { minimum: answer[0], answer };
+    }
+    console.log(solution([12, 77, 38, 41, 53, 92, 85]));
+  </script>
+
+  <body></body>
+</html>
