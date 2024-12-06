@@ -6,16 +6,16 @@
     <title>Document</title>
   </head>
   <script>
-    function solution(str, char) {
-      let count = 0;
-      for (let value of str) {
-        if (value === char) {
-          count += 1;
+    function solution(str) {
+      let answer = "";
+      for (let char of str) {
+        if (!answer.includes(char)) {
+          answer += char;
         }
       }
-      return count;
+      return answer;
     }
-    console.log(solution("COMPUTERPROGRAMMING", "R"));
+    console.log(solution("ksekkset"));
   </script>
 
   <body></body>

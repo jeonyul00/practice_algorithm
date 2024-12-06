@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(str) {
+      let answer = "";
+      const len = str.length;
+
+      if (len % 2 !== 0) {
+        answer = str[Math.floor(len / 2)];
+      } else {
+        answer = str.substring(len / 2 - 1, len / 2 + 1);
+      }
+
+      return answer;
+    }
+
+    console.log(solution("study"));
+    console.log(solution("good"));
+  </script>
+
+  <body></body>
+</html>

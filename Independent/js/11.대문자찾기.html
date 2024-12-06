@@ -6,16 +6,16 @@
     <title>Document</title>
   </head>
   <script>
-    function solution(str, char) {
+    function solution(str) {
       let count = 0;
-      for (let value of str) {
-        if (value === char) {
+      for (let char of str) {
+        if (char === char.toUpperCase()) {
           count += 1;
         }
       }
       return count;
     }
-    console.log(solution("COMPUTERPROGRAMMING", "R"));
+    console.log(solution("KoreaTimeGood"));
   </script>
 
   <body></body>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(arr) {
+      let answer = arr[0];
+      for (let element of arr) {
+        if (element.length > answer.length) {
+          answer = element;
+        }
+      }
+      return answer;
+    }
+    console.log(solution(["teacher", "time", "student", "beautiful", "good"]));
+  </script>
+
+  <body></body>
+</html>
