@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(str, char) {
+      let count = 0;
+      for (value of str) {
+        if (value === char) {
+          count += 1;
+        }
+      }
+      return count;
+    }
+    console.log(solution("COMPUTERPROGRAMMING", "R"));
+  </script>
+
+  <body></body>
+</html>
