@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(arr) {
+      let max = Number.MIN_SAFE_INTEGER;
+      let answer = 0;
+
+      for (element of arr) {
+        let sum = 0;
+        let temp = element;
+        while (temp) {
+          sum += temp % 10;
+          temp = Math.floor(temp / 10);
+        }
+
+        if (sum > max) {
+          max = sum;
+          answer = temp;
+        } else if (sum === max) {
+          if (element > answer) {
+            answer = element;
+          }
+        }
+      }
+
+      return answer;
+    }
+    console.log(solution([128, 460, 603, 40, 521, 137, 123]));
+  </script>
+
+  <body></body>
+</html>
