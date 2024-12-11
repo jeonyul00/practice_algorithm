@@ -7,10 +7,24 @@
   </head>
   <script>
     function solution(price, products) {
-      // 제일 비싼 물건을 50프로 할인
-      // 다 더해서 (값 + 배송비) 정렬
-      // 쿠폰 시발 왜 있는데 -> 모든 경우의 수를 다 적용해보기
-      //
+      let answer = 0;
+      let studentCount = products.length;
+      products.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+      for (let i = 0; i < studentCount; i++) {
+        let money = price - (products[i][0] / 2 + products[i][1]);
+        let cnt = 1;
+        for (let j = 0; j < studentCount; j++) {
+          if (j !== i && products[j][0] + products[j][1] > money) {
+            break;
+          }
+          if (j !== i && products[j][0] + products[j][1] <= money) {
+            money -= products[j][0] + products[j][1];
+            cnt++;
+          }
+        }
+        answer = Math.max(answer, cnt);
+      }
+      return answer;
     }
     console.log(
       solution(28, [
