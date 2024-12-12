@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(str1, str2) {
+      const answer = "YES";
+      const map = new Map();
+      for (let char of str1) {
+        if (map.has(char)) {
+          map.set(char, map.get(char) + 1);
+        } else {
+          map.set(char, 1);
+        }
+      }
+      for (let char of str2) {
+        if (!map.has(char) || map.get(char) === 0) {
+          return "NO";
+        }
+        map.set(char, map.get(char) - 1);
+      }
+      return answer;
+    }
+
+    console.log(solution("AbaAeCe", "baeeACA"));
+  </script>
+
+  <body></body>
+</html>

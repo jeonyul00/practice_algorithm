@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    // function solution(arrA, arrB) {
+    //   const mergedArr = arrA.concat(arrB);
+    //   return mergedArr.sort((a, b) => a - b);
+    // }
+
+    function solution(arrA, arrB) {
+      let pointA = 0;
+      let pointB = 0;
+      const answer = [];
+      while (pointA < arrA.length && pointB < arrB.length) {
+        if (arrA[pointA] <= arrB[pointB]) {
+          answer.push(arrA[pointA]);
+          pointA++;
+        } else {
+          answer.push(arrB[pointB]);
+          pointB++;
+        }
+      }
+      while (pointA < arrA.length) {
+        answer.push(arrA[pointA]);
+        pointA++;
+      }
+
+      while (pointB < arrB.length) {
+        answer.push(arrB[pointB]);
+        pointB++;
+      }
+
+      return answer;
+    }
+
+    console.log(solution([1, 3, 5], [2, 3, 6, 7, 9]));
+  </script>
+
+  <body></body>
+</html>

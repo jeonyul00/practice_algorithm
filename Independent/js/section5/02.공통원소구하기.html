@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(arrA, arrB) {
+      const answer = [];
+      const sortedArrA = arrA.sort((a, b) => a - b);
+      const sortedArrB = arrB.sort((a, b) => a - b);
+      let pointA = 0;
+      let pointB = 0;
+
+      while (sortedArrA.length > pointA && sortedArrB.length > pointB) {
+        if (sortedArrA[pointA] > sortedArrB[pointB]) {
+          pointB++;
+        }
+        if (sortedArrA[pointA] < sortedArrB[pointB]) {
+          pointA++;
+        }
+
+        if (sortedArrA[pointA] === sortedArrB[pointB]) {
+          answer.push(sortedArrA[pointA]);
+          pointA++;
+          pointB++;
+        }
+      }
+
+      return answer;
+    }
+
+    console.log(solution([1, 3, 9, 5, 2], [3, 2, 5, 7, 8]));
+  </script>
+
+  <body></body>
+</html>
