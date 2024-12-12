@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(str) {
+      let answer = "";
+      let parenthesesCount = 0;
+
+      for (let char of str) {
+        if (char === "(") {
+          parenthesesCount++;
+        } else if (char === ")") {
+          parenthesesCount--;
+        } else if (parenthesesCount === 0) {
+          answer += char;
+        }
+      }
+
+      return answer;
+    }
+
+    console.log(solution("(A(BC)D)EF(G(H)(IJ)K)LM(N)")); // EFLM
+    console.log(solution("A(BC)DEF(G(H)(IJ)K)LM(N)")); // ADEFLM
+  </script>
+
+  <body></body>
+</html>
