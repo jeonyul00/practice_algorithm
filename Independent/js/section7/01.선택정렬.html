@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(str) {
+      const answer = str.split(" ").map(Number);
+
+      for (let i = 0; i < answer.length; i++) {
+        let idx = i;
+        for (let j = i + 1; j < answer.length; j++) {
+          if (answer[j] < answer[idx]) {
+            idx = j;
+          }
+        }
+        [answer[i], answer[idx]] = [answer[idx], answer[i]];
+      }
+      return answer.join(" ");
+    }
+
+    console.log(solution("13 5 11 7 23 15"));
+  </script>
+
+  <body></body>
+</html>

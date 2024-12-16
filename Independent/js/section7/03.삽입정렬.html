@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(arr) {
+      for (let i = 1; i < arr.length; i++) {
+        // 1번 인덱스부터 시작
+        let temp = arr[i]; // 현재 삽입하려는 값
+        let j = i - 1; // 정렬된 부분의 마지막 위치
+        while (j >= 0 && arr[j] > temp) {
+          // 뒤로 밀어야 하는 조건
+          arr[j + 1] = arr[j]; // 큰 값을 한 칸 뒤로 이동
+          j--; // 다음 비교로 이동
+        }
+        arr[j + 1] = temp; // 삽입 위치에 값 넣기
+      }
+      return arr; // 정렬된 배열 반환
+    }
+
+    console.log(solution([11, 7, 5, 6, 10, 9])); // [5, 6, 7, 9, 10, 11]
+  </script>
+
+  <body></body>
+</html>
