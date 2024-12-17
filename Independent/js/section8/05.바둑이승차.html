@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(limit, weight) {
+      let answer = 0;
+
+      function DFS(index, sum) {
+        if (sum > limit) return;
+        if (index === weight.length) {
+          answer = Math.max(sum, answer);
+          return;
+        } else {
+          DFS(index + 1, sum + weight[index]);
+          DFS(index + 1, sum);
+        }
+      }
+
+      DFS(0, 0);
+
+      return answer;
+
+      console.log(answer);
+    }
+    console.log(solution(259, [81, 58, 42, 33, 61]));
+  </script>
+
+  <body></body>
+</html>
