@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(number, count) {
+      const answer = [];
+      const temp = Array(count).fill(0);
+
+      function DFS(index) {
+        if (index === count) {
+          answer.push(temp.slice());
+        } else {
+          for (let i = 1; i <= number; i++) {
+            temp[index] = i;
+            DFS(index + 1);
+          }
+        }
+      }
+      DFS(0);
+      return answer;
+    }
+    console.log(solution(3, 2));
+  </script>
+
+  <body></body>
+</html>
