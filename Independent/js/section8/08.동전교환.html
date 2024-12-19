@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(limit, types, receive) {
+      let answer = 0;
+
+      function DFS(level, sum) {
+        if (sum > receive) return;
+        if (sum === receive) {
+          answer = Math.min(answer, level);
+        } else {
+          for (let i = 0; i < types.length; i++) {
+            DFS(level + 1, sum + types[i]);
+          }
+        }
+      }
+
+      DFS(0, 0);
+
+      return answer;
+    }
+    console.log(solution(3, [1, 2, 5], 15));
+  </script>
+
+  <body></body>
+</html>
