@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const 내구도 = [1, 2, 1, 4];
+      const 독 = [
+        {
+          이름: "루비독",
+          나이: "95년생",
+          점프력: "3",
+          몸무게: "4",
+        },
+        {
+          이름: "피치독",
+          나이: "95년생",
+          점프력: "3",
+          몸무게: "3",
+        },
+        {
+          이름: "씨-독",
+          나이: "72년생",
+          점프력: "2",
+          몸무게: "1",
+        },
+        {
+          이름: "코볼독",
+          나이: "59년생",
+          점프력: "1",
+          몸무게: "1",
+        },
+      ];
+
+      function solution(durability, dog) {
+        const answer = [];
+        for (let element of dog) {
+          let position = 0;
+          let fail = false;
+          while (position < durability.length) {
+            position += parseInt(element["점프력"], 10);
+            durability[position - 1] -= parseInt(element["몸무게"], 10);
+            if (durability[position - 1] < 0) {
+              fail = true;
+              break;
+            }
+          }
+          if (!fail) {
+            answer.push(element["이름"]);
+          }
+        }
+        return answer;
+      }
+      console.log(solution(내구도, 독));
+    </script>
+  </body>
+</html>
