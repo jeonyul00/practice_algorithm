@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        n / 12 해서 나머지가 0이 아니면 몫에 +1 하면 되겠져
+      */
+      function solution(n) {
+        let answer = Math.ceil(n / 12);
+        return answer;
+      }
+      console.log(solution(25));
+      console.log(solution(178));
+    </script>
+  </body>
+</html>

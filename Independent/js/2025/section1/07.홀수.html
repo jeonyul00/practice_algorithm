@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(...n) {
+        let answer = [];
+        let sum = 0;
+        let min = Number.MAX_SAFE_INTEGER;
+        for (number of n) {
+          if (number % 2 === 1) {
+            sum += number;
+            if (number < min) {
+              min = number;
+            }
+          }
+        }
+        answer.push(sum);
+        answer.push(min);
+        return answer;
+      }
+      console.log(
+        solution(1, 5, 49, 2, 1, 546, 221, 28, 7, 2, 3, 188, 584, 1489)
+      );
+    </script>
+  </body>
+</html>
