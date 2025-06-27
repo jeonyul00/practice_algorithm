@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(str) {
+      let onlyString = str.toLowerCase().replace(/[^a-z]/g, "");
+      for (let i = 0; i < onlyString.length; i++) {
+        if (onlyString[i] !== onlyString[onlyString.length - i - 1]) {
+          return false;
+        }
+      }
+      return true;
+    }
+    console.log(solution("found7, time: study; Yduts; emit, 7Dnuof"));
+  </script>
+
+  <body></body>
+</html>

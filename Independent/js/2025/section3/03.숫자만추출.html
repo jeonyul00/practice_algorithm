@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(str) {
+      let answer = "";
+      for (element of str) {
+        if (!isNaN(element)) {
+          answer += element;
+        }
+      }
+      return parseInt(answer);
+    }
+    console.log(solution("g0en2T0s8eSoft"));
+  </script>
+
+  <body></body>
+</html>

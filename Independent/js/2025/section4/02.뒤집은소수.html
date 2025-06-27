@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(arr) {
+      const answer = [];
+      const reverseArr = arr.map((num) =>
+        parseInt(num.toString().split("").reverse().join(""))
+      );
+
+      for (num of reverseArr) {
+        if (num === 1) {
+          continue;
+        }
+        let trigger = true;
+        for (let i = 2; i < Math.sqrt(num); i++) {
+          if (num % i === 0) {
+            trigger = false;
+            break;
+          }
+        }
+        if (trigger) {
+          answer.push(num);
+        }
+      }
+
+      return answer;
+    }
+
+    console.log(solution([32, 55, 62, 20, 250, 370, 200, 30, 100]));
+  </script>
+
+  <body></body>
+</html>
