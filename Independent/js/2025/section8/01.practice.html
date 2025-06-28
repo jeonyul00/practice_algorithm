@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>여기서 무조건 한문제 나온다 재귀 함수 필수로 알 것</title>
+  </head>
+  <body>
+    <script>
+      function solution(num) {
+        const answer = [];
+        const DFS = (num) => {
+          if (num <= 0) return;
+          //   DFS(num - 1);
+          answer.push(num);
+          DFS(num - 1);
+        };
+        DFS(num);
+        return answer;
+      }
+      console.log(solution(3));
+      console.log(solution(5));
+      console.log(solution(7));
+      console.log(solution(9));
+    </script>
+  </body>
+</html>

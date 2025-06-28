@@ -10,7 +10,6 @@
       function solution(str) {
         let answer = true;
         const stack = [];
-
         for (char of str) {
           if (stack.length === 0 && char === ")") return false;
           if (char === "(") {

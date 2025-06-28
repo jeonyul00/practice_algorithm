@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        const stack = [];
+        for (const char of str) {
+          if (char === ")") {
+            while (true) {
+              const top = stack.pop();
+              if (top === "(") break;
+            }
+          } else {
+            stack.push(char);
+          }
+        }
+        return stack.join("");
+      }
+      console.log(solution("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));
+    </script>
+  </body>
+</html>
