@@ -7,12 +7,11 @@
   </head>
   <body>
     <script>
-      function solution(str) {
-        let answer;
-        let hash = new Map();
-        let max = 0;
+      function solution(strA, strB) {
+        const hash = new Map();
+        let answer = true;
 
-        for (const char of str) {
+        for (const char of strA) {
           if (hash.has(char)) {
             hash.set(char, hash.get(char) + 1);
           } else {
@@ -20,16 +19,14 @@
           }
         }
 
-        for (const [key, value] of hash) {
-          if (value > max) {
-            max = value;
-            answer = key;
-          }
+        for (const char of strB) {
+          if (!hash.has(char) || hash.get(char) === 0) return false;
+          hash.set(char, hash.get(char) - 1);
         }
 
         return answer;
       }
-      console.log(solution("BACBACCACCBDEDE"));
+      console.log(solution("AbaAeCe", "baeeACA"));
     </script>
   </body>
 </html>
