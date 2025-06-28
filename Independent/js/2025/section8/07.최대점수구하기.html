@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(limitTime, scores, time) {
+        let answer = 0;
+
+        function DFS(level, sum, useTime) {
+          if (level === scores.length) {
+            if (useTime > limitTime) return;
+            answer = Math.max(sum, answer);
+          } else {
+            DFS(level + 1, sum + scores[level], useTime + time[level]);
+            DFS(level + 1, sum, useTime);
+          }
+        }
+
+        DFS(0, 0, 0); // 인덱스, 합계, 시간
+
+        return answer;
+      }
+      console.log(solution(20, [10, 25, 15, 6, 7], [5, 12, 8, 3, 4]));
+    </script>
+  </body>
+</html>
