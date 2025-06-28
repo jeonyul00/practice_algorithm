@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(day, ...arr) {
+        let startPoint = 0;
+        let answer = 0;
+        while (startPoint <= arr.length - day) {
+          let total = arr
+            .slice(startPoint, startPoint + day)
+            .reduce((a, b) => a + b, 0);
+          answer = Math.max(answer, total);
+          startPoint++;
+        }
+        return answer;
+      }
+      console.log(solution(3, 12, 15, 11, 20, 25, 10, 20, 19, 13, 15));
+    </script>
+  </body>
+</html>
