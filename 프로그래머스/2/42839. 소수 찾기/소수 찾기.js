@@ -11,7 +11,7 @@ function solution(numbers) {
         }
         if (arr.length === 0) return;
         for (let i = 0; i < arr.length; i++) {
-            const nextArr = arr.slice();            
+            const nextArr = arr.slice();             
             const [digit] = nextArr.splice(i, 1);
             permute(nextArr, cur + digit);
         }
