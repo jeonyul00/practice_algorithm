@@ -1,13 +1,20 @@
-function solution(participant, completion) {    
-    let answer = '';
-    participant.sort();
-    completion.sort();
-    for (let i = 0; i < participant.length; i++){
-        if (participant[i] !== completion[i]) {
-            answer = participant[i];
-            return answer;
+
+function solution(participant, completion) {
+    const hash = new Map()
+    
+    for(const person of participant) {
+        if(hash.get(person)) {
+            hash.set(person,(hash.get(person) || 0) + 1)
+        } else {
+            hash.set(person, 1)
         }
     }
+       
+    for(const winner of completion) {                
+        hash.set(winner, hash.get(winner) - 1)        
+    }
     
-    return participant[participant.length - 1];
+    for(const [name, count] of hash) {
+        if(count > 0) return name
+    }
 }
