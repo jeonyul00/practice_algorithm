@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- BFS -->
+    <script>
+      function solution(s, e) {
+        let answer = 0;
+        const check = Array.from({ length: 10001 }, () => 0);
+        const distance = Array.from({ length: 10001 }, () => 0);
+        const queue = [];
+        check[s] = 1;
+        queue.push(s);
+
+        while (queue.length) {
+          const x = queue.shift(); // 위치에서 갈 수 있는 다음 위치들을 확인함
+          for (let nextVertex of [x - 1, x + 1, x + 5]) {
+            if (nextVertex === e) return distance[x] + 1; // 여기서 + 1이 붙은 이유 : 방금 한 번 움직여서 온거니까
+            if (
+              nextVertex > 0 &&
+              nextVertex <= 10000 &&
+              check[nextVertex] === 0
+            ) {
+              check[nextVertex] = 1;
+              queue.push(nextVertex);
+              distance[nextVertex] = distance[x] + 1;
+            }
+          }
+        }
+
+        return answer;
+      }
+      console.log(solution(5, 14));
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>
