@@ -1,15 +1,15 @@
-function solution(s){
-    const arr = []
-    for(let i = 0; i < s.length; i++){
-        if(s[i] === '(') {
-            arr.push(s[i])
-        } else if(s[i] === ')'){
-            if(arr.length === 0){
-                return false
-            } else {
-                arr.pop()
-            }            
+function solution(s){    
+    const arr = s.split('')
+    const stack = []
+
+    for(char of arr) {
+        if(stack.length === 0 && char === ')') return false
+        if(char === '(') {
+            stack.push('(')
+        } else {
+            stack.pop()
         }
     }
-    return arr.length === 0
+
+    return stack.length === 0;
 }
