@@ -1,10 +1,14 @@
 function solution(s) {
-  const numbers = s.split(' ').map(Number);
-  let max = -Infinity;
-  let min = Infinity;
-  for (let num of numbers) {
-    if (num > max) max = num;
-    if (num < min) min = num;
-  }
-  return `${min} ${max}`;
+    let max = Number.MIN_SAFE_INTEGER
+    let min = Number.MAX_SAFE_INTEGER
+    let answer = '';
+    const arr = s.split(" ")
+    
+    for(str of arr) {
+        max = Math.max(str, max)
+        min = Math.min(str, min)
+    }
+    
+    answer = min + " " + max
+    return answer;
 }
