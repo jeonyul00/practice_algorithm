@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    💬 문제 설명
+    어플은 다양한 해상도에서 동작합니다. 주어진 해상도(width, height)에 따라 각 UI 컴포넌트의 크기를 기준 해상도 대비 비율로 자동 조정하는 함수를 만드세요.
+    📘 예시
+    기준 해상도: 375 x 812
+    입력: width = 414, height = 896, 기준 버튼 크기 = { w: 100, h: 50 }
+    출력: { w: 110.4, h: 55.1 }
+    -->
+    <script>
+      function solution(currentWidth, currentHeight, base) {
+        // 기준이 되는 화면 크기
+        const baseWidth = 375;
+        const baseHeight = 812;
+
+        // 지금 화면이 기준보다 얼마나 넓은지 계산
+        const scaleX = currentWidth / baseWidth;
+
+        // 지금 화면이 기준보다 얼마나 긴지 계산
+        const scaleY = currentHeight / baseHeight;
+
+        // 버튼 가로 크기에 비율 곱해서 새 가로 크기 계산
+        const resizedWidth = Math.round(base.w * scaleX * 10) / 10;
+
+        // 버튼 세로 크기에 비율 곱해서 새 세로 크기 계산
+        const resizedHeight = Math.round(base.h * scaleY * 10) / 10;
+
+        // 계산한 크기를 { w: 가로, h: 세로 }로 돌려줌
+        return { w: resizedWidth, h: resizedHeight };
+      }
+
+      // 화면 크기가 414x896일 때, 버튼 100x50을 얼마나 키워야 하는지 확인
+      console.log(solution(414, 896, { w: 100, h: 50 }));
+      // 결과: { w: 110.4, h: 55.1 }
+    </script>
+  </body>
+</html>
