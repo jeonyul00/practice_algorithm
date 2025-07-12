@@ -1,6 +1,14 @@
-function solution(s){
-  const [splitString] = [s.toLowerCase().split("")];
-  const conuntP = splitString.filter((v) => v === "p");
-  const conuntY = splitString.filter((v) => v === "y");
-  return conuntP.length === conuntY.length;
+function solution(s){    
+    let pCount = 0
+    let yCount = 0
+
+    for(char of s) {
+        if(char.toUpperCase() === 'P') {
+            pCount++
+        } else if(char.toUpperCase() === 'Y') {
+            yCount++
+        }
+    }
+
+    return pCount === yCount;
 }
