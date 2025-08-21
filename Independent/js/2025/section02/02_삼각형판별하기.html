@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 세 막대로 삼각형을 만들 수 있으면 true
+      function solution(...n) {
+        let max = Number.MIN_SAFE_INTEGER;
+        let total = 0;
+        for (const number of n) {
+          if (number > max) max = number;
+          total += number;
+        }
+        return total > 2 * max;
+      }
+
+      console.log(solution(6, 7, 11));
+      console.log(solution(6, 11, 7));
+      console.log(solution(3, 4, 7));
+    </script>
+  </body>
+</html>

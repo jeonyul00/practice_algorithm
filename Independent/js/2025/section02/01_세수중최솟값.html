@@ -7,14 +7,16 @@
   </head>
   <body>
     <script>
-      function solution(a, b, c) {
-        let answer;
-        if (a < b) answer = a;
-        else answer = b;
-        if (c < answer) a = c;
+      function solution(...n) {
+        let answer = Number.MAX_SAFE_INTEGER;
+        for (const number of n) {
+          if (answer > number) {
+            answer = number;
+          }
+        }
         return answer;
       }
-      console.log(solution(1, 2, 3));
+      console.log(solution(6, 5, 11));
     </script>
   </body>
 </html>
