@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function solution(arr) {
+      let answer = [];
+      for (let element of arr) {
+        if (!answer.includes(element)) {
+          answer.push(answer);
+        }
+      }
+      return answer;
+    }
+    console.log(solution(["good", "time", "good", "time", "student"]));
+  </script>
+
+  <body></body>
+</html>
