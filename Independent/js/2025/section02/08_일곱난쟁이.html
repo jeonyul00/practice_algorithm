@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(...n) {
+        const arr = [...n];
+        const total = arr.reduce((a, b) => a + b, 0);
+        const TARGET = 100;
+        for (let i = 0; i < arr.length - 1; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            if (total - arr[i] - arr[j] === TARGET) {
+              return arr.filter((_, idx) => idx !== i && idx !== j);
+            }
+          }
+        }
+      }
+
+      console.log(solution(20, 7, 23, 19, 10, 15, 25, 8, 13));
+    </script>
+  </body>
+</html>

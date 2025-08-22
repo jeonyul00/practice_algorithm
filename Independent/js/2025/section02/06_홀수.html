@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(...n) {
+        let answer = 0;
+        for (const number of n) {
+          if (number % 2 === 0) continue;
+          answer += number;
+        }
+        return answer;
+      }
+      console.log(solution(12, 77, 38, 41, 53, 92, 85));
+    </script>
+  </body>
+</html>
