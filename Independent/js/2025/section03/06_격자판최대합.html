@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let xMax = 0;
+        let yMax = 0;
+        let max = Number.MIN_SAFE_INTEGER;
+        for (let i = 0; i < arr.length; i++) {
+          xMax = 0;
+          yMax = 0;
+          for (let j = 0; j < arr.length; j++) {
+            xMax += arr[i][j];
+            yMax += arr[j][i];
+            max = Math.max(xMax, yMax, max);
+          }
+        }
+        xMax = 0;
+        yMax = 0;
+        for (let i = 0; i < arr.length; i++) {
+          xMax += arr[i][i];
+          yMax += arr[i][arr.length - i - 1];
+        }
+        max = Math.max(xMax, yMax, max);
+        return max;
+      }
+      console.log(
+        solution([
+          [10, 13, 10, 12, 15],
+          [12, 39, 30, 23, 11],
+          [11, 25, 50, 53, 15],
+          [19, 27, 29, 37, 27],
+          [19, 13, 30, 13, 19],
+        ])
+      );
+    </script>
+  </body>
+</html>
