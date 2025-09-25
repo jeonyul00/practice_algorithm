@@ -1,15 +1,16 @@
-function solution(s){    
-    const arr = s.split('')
+function solution(s){
+    const arr = s.split("")    
     const stack = []
-
-    for(char of arr) {
-        if(stack.length === 0 && char === ')') return false
-        if(char === '(') {
-            stack.push('(')
-        } else {
-            stack.pop()
+    
+    if (arr[0] === ')') return false
+    
+    for(let char of arr) {        
+        if(char === ')') {
+            stack.pop() 
         }
-    }
-
-    return stack.length === 0;
+        if(char === '(') {
+            stack.push(char)            
+        }        
+    }    
+    return !stack.length
 }
