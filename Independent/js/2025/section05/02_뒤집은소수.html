@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function reverseNumber(originalNumber) {
+        let reversedNumber = 0;
+        while (originalNumber > 0) {
+          const lastDigit = originalNumber % 10;
+          reversedNumber = reversedNumber * 10 + lastDigit;
+          originalNumber = Math.floor(originalNumber / 10);
+        }
+        return reversedNumber;
+      }
+
+      function isPrimeNumber(targetNumber) {
+        if (targetNumber < 2) return false;
+        if (targetNumber === 2) return true;
+        if (targetNumber % 2 === 0) return false;
+        const maxDivisor = Math.floor(Math.sqrt(targetNumber));
+        for (let divisor = 3; divisor <= maxDivisor; divisor += 2) {
+          if (targetNumber % divisor === 0) return false;
+        }
+        return true;
+      }
+
+      function solution(...inputNumbers) {
+        const primeNumbers = [];
+        for (const inputNumber of inputNumbers) {
+          const reversed = reverseNumber(inputNumber);
+          if (isPrimeNumber(reversed)) {
+            primeNumbers.push(reversed);
+          }
+        }
+        return primeNumbers;
+      }
+
+      console.log(solution(32, 55, 62, 20, 250, 370, 200, 30, 100));
+    </script>
+  </body>
+</html>

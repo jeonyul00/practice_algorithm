@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(...numbers) {
+        let answer = 0;
+        let max = 0;
+
+        for (num of numbers) {
+          let sum = num
+            .toString()
+            .split("")
+            .reduce((a, b) => a + Number(b), 0);
+          if (sum > max) {
+            max = sum;
+            answer = num;
+          } else if (sum === max) {
+            if (num > answer) answer = num;
+          }
+        }
+
+        return answer;
+      }
+      console.log(solution(128, 460, 603, 40, 521, 137, 123));
+    </script>
+  </body>
+</html>
